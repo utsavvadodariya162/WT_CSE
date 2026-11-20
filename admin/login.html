@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login — RaktSetu Blood Management</title>
+  <meta name="description" content="RaktSetu administrative portal login. Authorized staff access for managing donors, requests, and blood donation camps.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-login-layout">
+
+  <!-- Left: Visual & Project Branding Panel -->
+  <aside class="login-visual-panel">
+    <div>
+      <a class="login-brand-header" href="../client/index.html">
+        <span class="sidebar-logo-icon" aria-hidden="true"></span>
+        <span>Rakt<em>Setu</em></span>
+      </a>
+      <p class="login-subtitle-tag">Admin Control Panel</p>
+    </div>
+
+    <figure class="login-preview-figure m-0">
+      <img src="images/login-art.svg" alt="Illustration of secured administrator console" width="720" height="480">
+    </figure>
+
+   
+  </aside>
+
+  <!-- Right: Sign-in Form Card -->
+  <main class="login-form-panel" id="main">
+    <div class="login-form-card">
+
+      <div class="text-center mb-4">
+        <h1 class="section-title mb-1">Admin Login</h1>
+        <p class="text-muted-custom mb-0">Enter your credentials to access the management dashboard</p>
+      </div>
+
+      <div class="custom-card">
+        <div class="card-body-content">
+
+          <div class="status-alert-box" id="loginAlert"></div>
+
+          <form id="loginForm" action="dashboard.html" method="get" novalidate
+                data-validate data-submit-mode="navigate">
+
+            <div class="form-group-item">
+              <label class="form-label-custom" for="aUser">Username <span class="required-star">*</span></label>
+              <input class="input-control" type="text" id="aUser" value="admin"
+                     placeholder="admin" autocomplete="username" autocapitalize="off" spellcheck="false" required aria-describedby="errUser" aria-invalid="false">
+              <span class="field-error-msg" id="errUser"></span>
+            </div>
+
+            <div class="form-group-item">
+              <label class="form-label-custom" for="aPass">Password <span class="required-star">*</span></label>
+              <input class="input-control" type="password" id="aPass" value="admin123"
+                     placeholder="••••••••" autocomplete="current-password" required aria-describedby="errPass" aria-invalid="false">
+              <span class="field-error-msg" id="errPass"></span>
+            </div>
+
+            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-4">
+              <label class="custom-checkbox-label" for="aRemember">
+                <input type="checkbox" id="aRemember" checked>
+                <span>Remember Me</span>
+              </label>
+              <a href="#" class="inline-text-link" id="forgotLink">Forgot Password ?</a>
+            </div>
+
+            <button class="custom-btn btn-primary-theme btn-full-width" type="submit">LOGIN</button>
+          </form>
+
+          <p class="login-demo-credentials mb-0">
+            Demo Credentials : <b>admin</b> / <b>admin123</b>
+          </p>
+
+        </div>
+      </div>
+
+
+    </div>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/form-validation.js" defer></script>
+</body>
+</html>

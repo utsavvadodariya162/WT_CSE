@@ -1,0 +1,702 @@
+
+/* ---------- 1. ADMIN SHELL & SIDEBAR ------------------------- */
+.admin-app-layout, .adm {
+  min-height: 100vh;
+  background: #f9f6f3;
+}
+
+.admin-sidebar, .adm-side {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 266px;
+  background: #161113;
+  border-right: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+  z-index: 1045;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.sidebar-brand-box, .adm-side__brand {
+  padding: 24px 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+}
+.sidebar-brand-link, .adm-side__brandlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.sidebar-brand-link:hover, .adm-side__brandlink:hover {
+  color: #ffffff;
+}
+.sidebar-brand-link em, .adm-side__brandlink em {
+  font-style: normal;
+  color: #c81e28;
+}
+.sidebar-logo-icon, .adm-side__mark {
+  width: 20px;
+  height: 20px;
+  background: #c81e28;
+  border-radius: 60% 6px 60% 60%;
+  transform: rotate(45deg);
+  flex: none;
+}
+.sidebar-subtitle-tag, .adm-side__tag {
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6f6469;
+  margin-top: 9px;
+  margin-bottom: 0;
+}
+
+.sidebar-nav-menu, .adm-nav {
+  padding: 16px 14px;
+  flex: 1;
+}
+.sidebar-nav-link, .adm-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  margin-bottom: 3px;
+  border-radius: 8px;
+  font-size: 13.6px;
+  font-weight: 500;
+  color: #a99ea3;
+  transition: background 0.16s ease, color 0.16s ease;
+  position: relative;
+}
+.sidebar-nav-link:hover, .adm-nav__item:hover {
+  background: #231b1e;
+  color: #ffffff;
+}
+.sidebar-nav-link.active, .sidebar-nav-link.is-active,
+.adm-nav__item.active, .adm-nav__item.is-active {
+  background: #b3121b;
+  color: #ffffff;
+  font-weight: 600;
+}
+.sidebar-nav-link.active .sidebar-nav-icon,
+.sidebar-nav-link.is-active .adm-nav__ico,
+.adm-nav__item.active .sidebar-nav-icon,
+.adm-nav__item.is-active .adm-nav__ico {
+  opacity: 1;
+}
+.sidebar-nav-icon, .adm-nav__ico {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  opacity: 0.7;
+}
+.sidebar-nav-logout, .adm-nav__item--danger {
+  color: #d09a9d;
+  margin-top: 10px;
+}
+.sidebar-nav-logout:hover, .adm-nav__item--danger:hover {
+  background: rgba(179, 18, 27, 0.22);
+  color: #ffffff;
+}
+
+.sidebar-user-footer, .adm-side__foot {
+  padding: 18px 24px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6f6469;
+  line-height: 1.8;
+}
+.sidebar-user-footer b, .adm-side__foot b {
+  color: #b9adb2;
+  font-weight: 500;
+}
+
+/* ---------- 2. MAIN COLUMN & TOPBAR -------------------------- */
+.admin-main-wrapper, .adm-main {
+  margin-left: 266px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-header-bar, .adm-top {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid #e2d9d2;
+  padding: 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.admin-header-title, .adm-top__title {
+  font-size: 1.3rem;
+  margin: 0 0 1px;
+}
+.admin-header-tools, .adm-top__tools {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-search-box, .adm-search {
+  position: relative;
+  width: 150px;
+}
+.admin-search-box input, .adm-search input {
+  width: 100%;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  border: 1px solid #e2d9d2;
+  border-radius: 100px;
+  padding: 9px 15px 9px 36px;
+  background: #ffffff;
+  color: #1a1417;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.admin-search-box input:focus, .adm-search input:focus {
+  outline: none;
+  border-color: #b3121b;
+  box-shadow: 0 0 0 3px #fdeeed;
+}
+.admin-search-box svg, .adm-search svg {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a5999f;
+}
+
+.admin-user-avatar, .adm-avatar {
+  width: 38px;
+  height: 38px;
+  flex: none;
+  border-radius: 50%;
+  background: #1a1417;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.admin-content-area, .adm-body {
+  padding: 20px;
+  flex: 1;
+}
+
+/* Mobile sidebar burger button */
+.admin-mobile-toggle, .adm-burger {
+  display: none;
+  border: 1px solid #e2d9d2;
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+.admin-backdrop-scrim, .adm-scrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(22, 17, 19, 0.5);
+  z-index: 1040;
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+@media (max-width: 991.98px) {
+  .admin-sidebar, .adm-side {
+    transform: translateX(-100%);
+  }
+  .admin-app-layout.is-open .admin-sidebar,
+  .adm.is-open .adm-side {
+    transform: none;
+    box-shadow: 0 16px 40px -16px rgba(26, 20, 23, 0.35);
+  }
+  .admin-app-layout.is-open .admin-backdrop-scrim,
+  .adm.is-open .adm-scrim {
+    display: block;
+    opacity: 1;
+  }
+  .admin-main-wrapper, .adm-main {
+    margin-left: 0;
+  }
+  .admin-mobile-toggle, .adm-burger {
+    display: inline-flex;
+  }
+  .admin-header-bar, .adm-top {
+    padding: 14px 16px;
+  }
+  .admin-content-area, .adm-body {
+    padding: 18px 14px;
+  }
+  .admin-header-tools, .adm-top__tools {
+    width: 100%;
+    margin-left: 0;
+    order: 3;
+  }
+  .admin-search-box, .adm-search {
+    width: 100%;
+  }
+}
+
+/* ---------- 3. KPI CARDS ------------------------------------- */
+.dashboard-kpi-card, .adm-kpi {
+  background: #ffffff;
+  border: 1px solid #e2d9d2;
+  border-left: 3px solid #b3121b;
+  border-radius: 8px;
+  padding: 20px 22px;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.dashboard-kpi-card:hover, .adm-kpi:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px -8px rgba(26, 20, 23, 0.22);
+}
+.kpi-border-amber, .adm-kpi--amber { border-left-color: #9a6300; }
+.kpi-border-green, .adm-kpi--green { border-left-color: #1b683d; }
+.kpi-border-slate, .adm-kpi--slate { border-left-color: #385a75; }
+
+.kpi-caption-label, .adm-kpi__label {
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a6e74;
+  margin-bottom: 10px;
+}
+.kpi-metric-number, .adm-kpi__num {
+  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a1417;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-progress-track, .adm-kpi__meter {
+  height: 4px;
+  background: #ede5df;
+  border-radius: 2px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+.kpi-progress-track i, .adm-kpi__meter i {
+  display: block;
+  height: 100%;
+  border-radius: 2px;
+  background: #b3121b;
+  transition: width 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.kpi-border-amber .kpi-progress-track i, .adm-kpi--amber .adm-kpi__meter i { background: #9a6300; }
+.kpi-border-green .kpi-progress-track i, .adm-kpi--green .adm-kpi__meter i { background: #1b683d; }
+.kpi-border-slate .kpi-progress-track i, .adm-kpi--slate .adm-kpi__meter i { background: #385a75; }
+.kpi-footer-status, .adm-kpi__foot {
+  font-size: 12px;
+  color: #7a6e74;
+  margin-top: 9px;
+}
+
+.dashboard-status-donut {
+  background: conic-gradient(#9a6300 0% 50%, #1b683d 50% 78.57%, #385a75 78.57% 92.86%, #686064 92.86% 100%);
+}
+.report-month-donut {
+  background: conic-gradient(#b3121b 0% 21.43%, #9a6300 21.43% 57.14%, #385a75 57.14% 100%);
+}
+.chart-color-amber { background: #9a6300; }
+.chart-color-green { background: #1b683d; }
+.chart-color-blue { background: #385a75; }
+.chart-color-gray { background: #686064; }
+.chart-color-crimson { background: #b3121b; }
+.dashboard-table-plain {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.custom-data-table tbody tr.report-shortage-row,
+.rs-table tbody tr.report-shortage-row {
+  background: #fdeeed;
+}
+.report-shortage { color: #b3121b; }
+
+/* ---------- 4. TOOLBAR & TABS -------------------------------- */
+.admin-action-toolbar, .adm-toolbar {
+  background: #ffffff;
+  border: 1px solid #e2d9d2;
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin-bottom: 22px;
+  box-shadow: 0 1px 3px rgba(26, 20, 23, 0.06);
+}
+.admin-action-toolbar .form-group-item,
+.adm-toolbar .rs-field {
+  margin-bottom: 0;
+}
+
+.admin-tab-group, .adm-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.admin-filter-tab, .adm-tab {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 10px 20px;
+  border: 1px solid #e2d9d2;
+  background: #ffffff;
+  color: #453b40;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.admin-filter-tab:hover, .adm-tab:hover {
+  border-color: #1a1417;
+  color: #1a1417;
+}
+.admin-filter-tab.active, .admin-filter-tab.is-active,
+.adm-tab.active, .adm-tab.is-active {
+  background: #1a1417;
+  border-color: #1a1417;
+  color: #ffffff;
+}
+.tab-count-badge, .adm-tab__n {
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 10.5px;
+  background: #f3ede8;
+  color: #7a6e74;
+  border-radius: 100px;
+  padding: 1px 7px;
+}
+.admin-filter-tab.active .tab-count-badge,
+.admin-filter-tab.is-active .adm-tab__n,
+.adm-tab.active .tab-count-badge,
+.adm-tab.is-active .adm-tab__n {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.admin-data-table, .rs-table--admin {
+  font-size: 13px;
+  min-width: 940px;
+}
+.admin-data-table thead th, .rs-table--admin thead th {
+  padding: 12px 15px;
+}
+.admin-data-table tbody td, .rs-table--admin tbody td {
+  padding: 11px 15px;
+}
+.request-note-copy {
+  font-size: 13.5px;
+  color: #453b40;
+}
+.request-match-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.request-patient-name {
+  font-size: 15px;
+  font-weight: 600;
+}
+.request-detail-value {
+  font-weight: 500;
+}
+.request-contact-number {
+  font-weight: 600;
+}
+.dashboard-camp-location {
+  font-size: 12.6px;
+}
+
+/* ---------- 5. MODAL DIALOGS --------------------------------- */
+.admin-modal-overlay, .adm-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  background: rgba(22, 17, 19, 0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.admin-modal-overlay.is-open, .adm-modal.is-open,
+.admin-modal-overlay:target, .adm-modal:target {
+  display: flex;
+  animation: alertFadeIn 0.2s ease both;
+}
+
+.modal-dialog-card, .adm-modal__box {
+  background: #ffffff;
+  border: 1px solid #e2d9d2;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 640px;
+  box-shadow: 0 16px 40px -16px rgba(26, 20, 23, 0.35);
+  animation: modalPopup 0.26s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes modalPopup {
+  from { opacity: 0; transform: translateY(-14px) scale(0.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+.modal-header-bar, .adm-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 18px 24px;
+  border-bottom: 1px solid #e2d9d2;
+  background: #f3ede8;
+  border-radius: 12px 12px 0 0;
+}
+.modal-title-text, .adm-modal__title {
+  font-size: 1.12rem;
+  margin: 0;
+}
+.modal-close-btn, .adm-modal__x {
+  border: 1px solid #e2d9d2;
+  background: #ffffff;
+  color: #7a6e74;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+.modal-close-btn:hover, .adm-modal__x:hover {
+  border-color: #b3121b;
+  color: #b3121b;
+}
+.modal-body-area, .adm-modal__body {
+  padding: 24px;
+}
+.modal-footer-area, .adm-modal__foot {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0 24px 24px;
+}
+
+/* ---------- 6. LOGIN PAGE ------------------------------------ */
+.admin-login-layout, .adm-login {
+  min-height: 100vh;
+  display: flex;
+}
+
+.login-visual-panel, .adm-login__left {
+  flex: 1 1 50%;
+  background: #161113;
+  color: #b9adb2;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.login-visual-panel::before, .adm-login__left::before {
+  content: "";
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  right: -220px;
+  top: -160px;
+  background: radial-gradient(circle, rgba(179, 18, 27, 0.3), transparent 66%);
+  pointer-events: none;
+}
+.login-visual-panel > *, .adm-login__left > * {
+  position: relative;
+}
+
+.login-brand-header, .adm-login__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+.login-brand-header em, .adm-login__brand em {
+  font-style: normal;
+  color: #c81e28;
+}
+.login-brand-header .sidebar-logo-icon,
+.adm-login__brand .adm-side__mark {
+  width: 26px;
+  height: 26px;
+}
+.login-subtitle-tag, .adm-login__tag {
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #6f6469;
+  margin-top: 12px;
+}
+.login-preview-figure, .adm-login__figure {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 18px;
+  margin: 28px 0;
+}
+.login-sidebar-note, .adm-login__note {
+  font-size: 13.5px;
+  color: #8b7f84;
+  margin: 0;
+  max-width: 44ch;
+}
+
+.login-form-panel, .adm-login__right {
+  flex: 1 1 50%;
+  background: #f9f6f3;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.login-form-card, .adm-login__card {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+}
+.login-demo-credentials, .adm-login__demo {
+  text-align: center;
+  font-family: "IBM Plex Mono", "Consolas", monospace;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: #7a6e74;
+  margin-top: 18px;
+}
+.login-demo-credentials b, .adm-login__demo b {
+  color: #b3121b;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .admin-header-bar, .adm-top { padding: 18px 23px; }
+  .admin-search-box, .adm-search { width: 184px; }
+  .admin-content-area, .adm-body { padding: 23px; }
+  .login-visual-panel, .adm-login__left,
+  .login-form-panel, .adm-login__right { padding: 38px; }
+}
+
+@media screen and (min-width: 1200px) {
+  .admin-header-bar, .adm-top { padding: 18px 34px; }
+  .admin-header-title, .adm-top__title { font-size: 1.72rem; }
+  .admin-search-box, .adm-search { width: 250px; }
+  .admin-content-area, .adm-body { padding: 34px; }
+  .kpi-metric-number, .adm-kpi__num { font-size: 2.5rem; }
+  .login-visual-panel, .adm-login__left,
+  .login-form-panel, .adm-login__right { padding: 60px; }
+}
+
+@media screen and (min-width: 1280px) {
+  .login-visual-panel, .adm-login__left,
+  .login-form-panel, .adm-login__right { padding: 64px; }
+}
+
+@media screen and (min-height: 700px) {
+  .admin-modal-overlay, .adm-modal { padding: 42px 16px; }
+  .login-preview-figure, .adm-login__figure { margin: 35px 0; }
+}
+
+@media screen and (min-height: 800px) {
+  .admin-modal-overlay, .adm-modal { padding: 48px 16px; }
+  .login-preview-figure, .adm-login__figure { margin: 40px 0; }
+}
+
+@media screen and (min-height: 900px) {
+  .admin-modal-overlay, .adm-modal { padding: 54px 16px; }
+  .login-preview-figure, .adm-login__figure { margin: 45px 0; }
+}
+
+@media screen and (min-height: 1000px) {
+  .admin-modal-overlay, .adm-modal { padding: 60px 16px; }
+  .login-preview-figure, .adm-login__figure { margin: 50px 0; }
+}
+
+@media screen and (min-height: 1170px) {
+  .admin-modal-overlay, .adm-modal { padding: 70px 16px; }
+}
+
+@media (max-width: 991.98px) {
+  .admin-login-layout, .adm-login {
+    flex-direction: column;
+  }
+  .login-visual-panel, .adm-login__left {
+    flex: none;
+    padding: 30px 22px;
+  }
+  .login-preview-figure, .adm-login__figure {
+    margin: 24px 0;
+  }
+  .login-form-panel, .adm-login__right {
+    padding: 34px 22px 50px;
+  }
+}
+
+/* ---------- 7. REPORTS & PRINT GRIDS ------------------------- */
+.report-charts-grid, .adm-reportgrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+@media (max-width: 991.98px) {
+  .report-charts-grid, .adm-reportgrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.print-report-header, .adm-printhead {
+  display: none;
+}
+@media print {
+  .print-report-header, .adm-printhead {
+    display: block;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+  }
+  .print-report-header h1, .adm-printhead h1 { font-size: 20pt; margin: 0 0 4px; }
+  .print-report-header p, .adm-printhead p   { font-size: 10pt; margin: 0; }
+  .admin-tab-group, .adm-tabs,
+  .admin-mobile-toggle, .adm-burger,
+  .admin-backdrop-scrim, .adm-scrim,
+  .admin-modal-overlay, .adm-modal {
+    display: none !important;
+  }
+  .report-charts-grid, .adm-reportgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

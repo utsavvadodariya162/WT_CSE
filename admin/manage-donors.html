@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Donors — RaktSetu Admin</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<div class="admin-app-layout">
+
+  <!-- ============ SIDEBAR NAVIGATION ============ -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand-box">
+      <a class="sidebar-brand-link" href="../client/index.html">
+        <span class="sidebar-logo-icon" aria-hidden="true"></span>
+        <span>Rakt<em>Setu</em></span>
+      </a>
+      <p class="sidebar-subtitle-tag">Admin Panel</p>
+    </div>
+
+    <nav class="sidebar-nav-menu" aria-label="Admin sections">
+      <a class="sidebar-nav-link" href="dashboard.html">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </a>
+      <a class="sidebar-nav-link active" href="manage-donors.html" aria-current="page">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        Manage Donors
+      </a>
+      <a class="sidebar-nav-link" href="manage-requests.html">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l5.5 6.2a7.3 7.3 0 1 1-11 0z"/></svg>
+        Manage Blood Requests
+      </a>
+      <a class="sidebar-nav-link" href="manage-camps.html">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+        Manage Camps
+      </a>
+      <a class="sidebar-nav-link" href="reports.html">
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+        Reports
+      </a>
+      <a class="sidebar-nav-link sidebar-nav-logout" href="login.html" data-logout>
+        <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/></svg>
+        Logout
+      </a>
+    </nav>
+
+  </aside>
+
+  <div class="admin-backdrop-scrim" aria-hidden="true"></div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <div class="admin-main-wrapper">
+
+    <header class="admin-header-bar">
+      <button class="admin-mobile-toggle" type="button" aria-label="Open admin menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      <div>
+        <h1 class="admin-header-title">Manage Donors</h1>
+        <nav class="breadcrumb-trail mt-0" aria-label="Breadcrumb">
+          <a href="dashboard.html">Admin</a> <span aria-hidden="true">›</span>
+          <span aria-current="page">Manage Donors</span>
+        </nav>
+      </div>
+
+      <div class="admin-header-tools">
+        <div class="admin-search-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input type="search" id="donorSearch" placeholder="Search name, ID or mobile…" aria-label="Search donors">
+        </div>
+        <div class="admin-user-avatar" aria-hidden="true">AD</div>
+      </div>
+    </header>
+
+    <main class="admin-content-area" id="main">
+
+      <!-- ---------- FILTER TOOLBAR ---------- -->
+      <form class="admin-action-toolbar" id="donorFilter">
+        <div class="row g-3 align-items-end">
+
+          <div class="col-xl-3 col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="mGroup">Blood Group</label>
+              <select class="select-control" id="mGroup">
+                <option value="">All Blood Groups</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="mCity">City</label>
+              <select class="select-control" id="mCity">
+                <option value="">All Cities</option>
+                <option value="Rajkot">Rajkot</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Jamnagar">Jamnagar</option>
+                <option value="Bhavnagar">Bhavnagar</option>
+                <option value="Gandhinagar">Gandhinagar</option>
+                <option value="Junagadh">Junagadh</option>
+                <option value="Morbi">Morbi</option>
+                <option value="Anand">Anand</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="mStatus">Status</label>
+              <select class="select-control" id="mStatus">
+                <option value="">All statuses</option>
+                <option value="Verified">Verified</option>
+                <option value="Pending">Pending</option>
+                <option value="Blocked">Blocked</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-xl-3 col-md-6">
+            <div class="filter-button-group">
+              <button class="custom-btn btn-secondary-theme" type="submit">Filter</button>
+              <button class="custom-btn btn-outline-theme" type="button" id="donorClear">Clear</button>
+              <a href="#donorModal" class="custom-btn btn-primary-theme text-decoration-none" id="addDonor">+ Add Donor</a>
+            </div>
+          </div>
+
+        </div>
+      </form>
+
+      <div class="search-results-summary-bar mt-0">
+        <p class="results-filter-description mb-0" id="donorNote">All donor records — 20 verified · 4 pending · 1 blocked</p>
+        <p class="results-counter-badge mb-0">Showing <b id="donorCount">10</b> of <span id="donorTotal">24</span> Donors</p>
+      </div>
+
+      <!-- ---------- DONORS TABLE ---------- -->
+      <div class="table-responsive-wrapper">
+        <table class="custom-data-table admin-data-table">
+          <caption class="visually-hidden">Registered donor records with verification controls</caption>
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Donor Name</th>
+              <th scope="col">Blood Grp</th>
+              <th scope="col">City</th>
+              <th scope="col">Mobile No</th>
+              <th scope="col">Status</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="donorRows">
+            <tr>
+              <td class="cell-id">DNR001</td>
+              <td class="cell-name">Utsav Vadodariya
+                <div class="text-muted-custom small-secondary-copy">Male · 20 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">O+</span></td>
+              <td>Rajkot</td>
+              <td class="cell-numeric">9825012345</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR002</td>
+              <td class="cell-name">Priya Mehta
+                <div class="text-muted-custom small-secondary-copy">Female · 26 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">A+</span></td>
+              <td>Ahmedabad</td>
+              <td class="cell-numeric">9714523310</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR003</td>
+              <td class="cell-name">Ravi Chauhan
+                <div class="text-muted-custom small-secondary-copy">Male · 31 yrs · not available</div>
+              </td>
+              <td><span class="blood-pill">B+</span></td>
+              <td>Surat</td>
+              <td class="cell-numeric">9909887762</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR004</td>
+              <td class="cell-name">Anjali Trivedi
+                <div class="text-muted-custom small-secondary-copy">Female · 24 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">O-</span></td>
+              <td>Rajkot</td>
+              <td class="cell-numeric">9825447781</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR005</td>
+              <td class="cell-name">Kunal Bhatt
+                <div class="text-muted-custom small-secondary-copy">Male · 29 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">AB+</span></td>
+              <td>Vadodara</td>
+              <td class="cell-numeric">9033112244</td>
+              <td><span class="status-badge badge-pending">Pending</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-success-custom btn-xs-custom">Verify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR006</td>
+              <td class="cell-name">Sneha Parmar
+                <div class="text-muted-custom small-secondary-copy">Female · 22 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">A-</span></td>
+              <td>Jamnagar</td>
+              <td class="cell-numeric">9558003311</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR007</td>
+              <td class="cell-name">Manthan Joshi
+                <div class="text-muted-custom small-secondary-copy">Male · 34 yrs · not available</div>
+              </td>
+              <td><span class="blood-pill">O+</span></td>
+              <td>Ahmedabad</td>
+              <td class="cell-numeric">9426778890</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR008</td>
+              <td class="cell-name">Hetal Solanki
+                <div class="text-muted-custom small-secondary-copy">Female · 27 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">B-</span></td>
+              <td>Bhavnagar</td>
+              <td class="cell-numeric">9737221100</td>
+              <td><span class="status-badge badge-verified">Verified</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unverify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR009</td>
+              <td class="cell-name">Dhruv Kansara
+                <div class="text-muted-custom small-secondary-copy">Male · 19 yrs · available</div>
+              </td>
+              <td><span class="blood-pill">AB-</span></td>
+              <td>Rajkot</td>
+              <td class="cell-numeric">9099445566</td>
+              <td><span class="status-badge badge-pending">Pending</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-success-custom btn-xs-custom">Verify</button>
+                <button type="button" class="custom-btn btn-danger-custom btn-xs-custom">Block</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-id">DNR014</td>
+              <td class="cell-name">Krupa Shah
+                <div class="text-muted-custom small-secondary-copy">Female · 25 yrs · not available</div>
+              </td>
+              <td><span class="blood-pill">AB+</span></td>
+              <td>Ahmedabad</td>
+              <td class="cell-numeric">9558991122</td>
+              <td><span class="status-badge badge-blocked">Blocked</span></td>
+              <td class="cell-actions">
+                <button type="button" class="custom-btn btn-success-custom btn-xs-custom">Verify</button>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Unblock</button>
+                <a href="#donorModal" class="custom-btn btn-outline-custom btn-xs-custom text-decoration-none">Edit</a>
+                <button type="button" class="custom-btn btn-outline-custom btn-xs-custom">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ ADD / EDIT DONOR MODAL ============ -->
+<div class="admin-modal-overlay" id="donorModal" role="dialog" aria-modal="true" aria-labelledby="donorModalTitle">
+  <div class="modal-dialog-card">
+    <div class="modal-header-bar">
+      <h2 class="modal-title-text" id="donorModalTitle">Add New Donor</h2>
+      <a href="#" class="modal-close-btn text-decoration-none d-flex align-items-center justify-content-center" data-close aria-label="Close dialog">&times;</a>
+    </div>
+
+    <form id="donorEditForm" novalidate data-validate data-submit-mode="demo"
+          data-clear-on-success
+          data-status-target="donorFormAlert"
+          data-success-message="Form submit ho gaya hai. Demo mein data save nahi hua.">
+      <div class="status-alert-box" id="donorFormAlert" role="status" aria-live="polite"></div>
+      <div class="modal-body-area">
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edName">Full Name <span class="required-star">*</span></label>
+              <input class="input-control" type="text" id="edName" data-input-filter="letters" required aria-describedby="edErrName" aria-invalid="false">
+              <span class="field-error-msg" id="edErrName"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edAge">Age <span class="required-star">*</span></label>
+              <input class="input-control" type="number" id="edAge" inputmode="numeric" min="18" max="65" step="1" required aria-describedby="edErrAge" aria-invalid="false">
+              <span class="field-error-msg" id="edErrAge"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edGender">Gender <span class="required-star">*</span></label>
+              <select class="select-control" id="edGender" required aria-describedby="edErrGender" aria-invalid="false">
+                <option value="">Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+              <span class="field-error-msg" id="edErrGender"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edGroup">Blood Group <span class="required-star">*</span></label>
+              <select class="select-control" id="edGroup" required aria-describedby="edErrGroup" aria-invalid="false">
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="O+" selected>O+</option>
+                <option value="O-">O-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+              </select>
+              <span class="field-error-msg" id="edErrGroup"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edMobile">Mobile Number <span class="required-star">*</span></label>
+              <input class="input-control" type="tel" id="edMobile" inputmode="numeric" data-input-filter="digits" pattern="[0-9]{10}" required aria-describedby="edErrMobile" aria-invalid="false">
+              <span class="field-error-msg" id="edErrMobile"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edEmail">Email Address <span class="required-star">*</span></label>
+              <input class="input-control" type="email" id="edEmail" required aria-describedby="edErrEmail" aria-invalid="false">
+              <span class="field-error-msg" id="edErrEmail"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edCity">City <span class="required-star">*</span></label>
+              <select class="select-control" id="edCity" required aria-describedby="edErrCity" aria-invalid="false">
+                <option value="Rajkot" selected>Rajkot</option>
+                <option value="Ahmedabad">Ahmedabad</option>
+                <option value="Surat">Surat</option>
+                <option value="Vadodara">Vadodara</option>
+                <option value="Jamnagar">Jamnagar</option>
+                <option value="Bhavnagar">Bhavnagar</option>
+                <option value="Gandhinagar">Gandhinagar</option>
+                <option value="Junagadh">Junagadh</option>
+                <option value="Morbi">Morbi</option>
+                <option value="Anand">Anand</option>
+              </select>
+              <span class="field-error-msg" id="edErrCity"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edLast">Last Donation Date</label>
+              <input class="input-control" type="date" id="edLast" data-rule="not-future" aria-describedby="edErrLast" aria-invalid="false">
+              <span class="field-error-msg" id="edErrLast"></span>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edAddress">Full Address <span class="required-star">*</span></label>
+              <textarea class="textarea-control" id="edAddress" style="min-height: 84px;" required aria-describedby="edErrAddress" aria-invalid="false"></textarea>
+              <span class="field-error-msg" id="edErrAddress"></span>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group-item">
+              <label class="form-label-custom" for="edStatus">Status</label>
+              <select class="select-control" id="edStatus">
+                <option>Pending</option>
+                <option selected>Verified</option>
+                <option>Blocked</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-6 d-flex align-items-end">
+            <div class="form-group-item w-100">
+              <label class="custom-checkbox-label" for="edAvailable">
+                <input type="checkbox" id="edAvailable" checked>
+                <span>Donor is willing to donate at present</span>
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer-area">
+        <button class="custom-btn btn-primary-theme" type="submit">Save</button>
+        <a href="#" class="custom-btn btn-outline-theme text-decoration-none" data-close>Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/form-validation.js" defer></script>
+</body>
+</html>

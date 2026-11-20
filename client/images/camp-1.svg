@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Blood donation camp — canopy and donation beds">
+  <rect width="640" height="360" fill="#f7f1ee"/>
+  <g stroke="#e8ded8" stroke-width="1">
+    <path d="M0 90h640M0 180h640M0 270h640"/>
+  </g>
+
+  <!-- canopy -->
+  <path d="M110 150 L320 62 L530 150 Z" fill="#b3121b"/>
+  <path d="M110 150 L320 62 L530 150 Z" fill="#000" opacity="0.08"/>
+  <path d="M110 150h420v16H110z" fill="#7a0910"/>
+  <g stroke="#8c7d82" stroke-width="5" stroke-linecap="round">
+    <path d="M132 166v104M508 166v104"/>
+  </g>
+
+  <!-- donation beds -->
+  <g>
+    <rect x="168" y="216" width="126" height="24" rx="6" fill="#fff" stroke="#ddd2cc" stroke-width="1.5"/>
+    <rect x="182" y="196" width="42" height="22" rx="5" fill="#efe4de" stroke="#ddd2cc" stroke-width="1.5"/>
+    <circle cx="203" cy="182" r="13" fill="#efe4de" stroke="#ddd2cc" stroke-width="1.5"/>
+    <rect x="196" y="240" width="8" height="30" fill="#ccc0ba"/>
+    <rect x="258" y="240" width="8" height="30" fill="#ccc0ba"/>
+  </g>
+  <g>
+    <rect x="346" y="216" width="126" height="24" rx="6" fill="#fff" stroke="#ddd2cc" stroke-width="1.5"/>
+    <rect x="360" y="196" width="42" height="22" rx="5" fill="#efe4de" stroke="#ddd2cc" stroke-width="1.5"/>
+    <circle cx="381" cy="182" r="13" fill="#efe4de" stroke="#ddd2cc" stroke-width="1.5"/>
+    <rect x="374" y="240" width="8" height="30" fill="#ccc0ba"/>
+    <rect x="436" y="240" width="8" height="30" fill="#ccc0ba"/>
+  </g>
+
+  <!-- IV stands -->
+  <g stroke="#a99ea3" stroke-width="3" stroke-linecap="round">
+    <path d="M312 150v120M490 150v120"/>
+  </g>
+  <rect x="300" y="158" width="24" height="34" rx="5" fill="#b3121b"/>
+  <rect x="478" y="158" width="24" height="34" rx="5" fill="#b3121b"/>
+
+  <path d="M0 270h640" stroke="#ddd2cc" stroke-width="2"/>
+  <text x="28" y="322" font-family="'IBM Plex Mono',monospace" font-size="13"
+        letter-spacing="3" fill="#7c6f75">VOLUNTARY BLOOD DONATION CAMP</text>
+</svg>

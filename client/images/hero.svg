@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 620" role="img" aria-label="Illustration of a blood drop linked to a network of donors">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf8f6"/>
+      <stop offset="1" stop-color="#f2ebe7"/>
+    </linearGradient>
+    <linearGradient id="drop" x1="0.3" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#d4242e"/>
+      <stop offset="1" stop-color="#7a0910"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#e3dad4" stroke-width="1"/>
+    </pattern>
+    <clipPath id="dropClip">
+      <path d="M400 150c0 0 118 128 118 200a118 118 0 0 1-236 0c0-72 118-200 118-200z"/>
+    </clipPath>
+  </defs>
+
+  <rect width="800" height="620" fill="url(#paper)"/>
+  <rect width="800" height="620" fill="url(#grid)" opacity="0.85"/>
+
+  <!-- connective network behind the drop -->
+  <g stroke="#d9cdc7" stroke-width="1.2" fill="none">
+    <path d="M92 118 L282 268 M92 118 L206 430"/>
+    <path d="M708 108 L520 262 M708 108 L636 372"/>
+    <path d="M206 430 L340 520 M636 372 L520 512"/>
+    <path d="M92 118 L708 108" stroke-dasharray="5 7"/>
+    <path d="M206 430 L636 372" stroke-dasharray="5 7"/>
+  </g>
+  <g fill="#fbf8f6" stroke="#b3121b" stroke-width="1.6">
+    <circle cx="92" cy="118" r="17"/>
+    <circle cx="708" cy="108" r="17"/>
+    <circle cx="206" cy="430" r="17"/>
+    <circle cx="636" cy="372" r="17"/>
+    <circle cx="340" cy="520" r="13"/>
+    <circle cx="520" cy="512" r="13"/>
+  </g>
+  <g font-family="'IBM Plex Mono',monospace" font-size="12" font-weight="600" fill="#b3121b" text-anchor="middle">
+    <text x="92"  y="123">A+</text>
+    <text x="708" y="113">O-</text>
+    <text x="206" y="435">B+</text>
+    <text x="636" y="377">AB</text>
+  </g>
+
+  <!-- the drop -->
+  <path d="M400 150c0 0 118 128 118 200a118 118 0 0 1-236 0c0-72 118-200 118-200z" fill="url(#drop)"/>
+  <g clip-path="url(#dropClip)" opacity="0.28">
+    <path d="M282 372h236M282 404h236M282 436h236M282 340h236" stroke="#fff" stroke-width="1"/>
+    <circle cx="352" cy="300" r="46" fill="#fff" opacity="0.35"/>
+  </g>
+
+  <!-- ECG trace across the drop -->
+  <path d="M232 350h96l18-42 22 86 20-58 16 26h104"
+        fill="none" stroke="#fbf8f6" stroke-width="4"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M120 350h112M568 350h112"
+        fill="none" stroke="#b3121b" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8"/>
+
+  <!-- caption rule -->
+  <path d="M120 560h560" stroke="#e3dad4" stroke-width="1"/>
+  <text x="120" y="588" font-family="'IBM Plex Mono',monospace" font-size="13"
+        letter-spacing="3.2" fill="#7c6f75">ONE DONOR · THREE LIVES</text>
+</svg>

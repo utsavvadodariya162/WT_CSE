@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 340" role="img" aria-label="Secure admin control panel illustration">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4242e"/><stop offset="1" stop-color="#7a0910"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="560" height="340" fill="none"/>
+  <g stroke="rgba(255,255,255,.07)" stroke-width="1">
+    <path d="M0 68h560M0 136h560M0 204h560M0 272h560"/>
+    <path d="M70 0v340M210 0v340M350 0v340M490 0v340"/>
+  </g>
+
+  <!-- dashboard window -->
+  <rect x="52" y="46" width="330" height="212" rx="10" fill="#211a1d" stroke="rgba(255,255,255,.13)" stroke-width="1.5"/>
+  <path d="M52 78h330" stroke="rgba(255,255,255,.13)" stroke-width="1.5"/>
+  <g fill="#6f6469"><circle cx="74" cy="62" r="4.5"/><circle cx="90" cy="62" r="4.5"/><circle cx="106" cy="62" r="4.5"/></g>
+
+  <!-- kpi tiles -->
+  <g>
+    <rect x="72" y="96" width="88" height="46" rx="5" fill="#161113" stroke="rgba(255,255,255,.1)"/>
+    <rect x="82" y="106" width="34" height="5" rx="2.5" fill="#6f6469"/>
+    <rect x="82" y="118" width="52" height="12" rx="3" fill="#d4242e"/>
+
+    <rect x="172" y="96" width="88" height="46" rx="5" fill="#161113" stroke="rgba(255,255,255,.1)"/>
+    <rect x="182" y="106" width="34" height="5" rx="2.5" fill="#6f6469"/>
+    <rect x="182" y="118" width="40" height="12" rx="3" fill="#9a6300"/>
+
+    <rect x="272" y="96" width="88" height="46" rx="5" fill="#161113" stroke="rgba(255,255,255,.1)"/>
+    <rect x="282" y="106" width="34" height="5" rx="2.5" fill="#6f6469"/>
+    <rect x="282" y="118" width="46" height="12" rx="3" fill="#1c6b3f"/>
+  </g>
+
+  <!-- bar chart -->
+  <g>
+    <path d="M72 232h288" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+    <g fill="#b3121b">
+      <rect x="80"  y="204" width="22" height="28" rx="2"/>
+      <rect x="114" y="186" width="22" height="46" rx="2"/>
+      <rect x="148" y="196" width="22" height="36" rx="2"/>
+      <rect x="182" y="170" width="22" height="62" rx="2"/>
+      <rect x="216" y="192" width="22" height="40" rx="2"/>
+      <rect x="250" y="180" width="22" height="52" rx="2"/>
+      <rect x="284" y="200" width="22" height="32" rx="2"/>
+      <rect x="318" y="176" width="22" height="56" rx="2"/>
+    </g>
+  </g>
+
+  <!-- shield lock -->
+  <g transform="translate(390 96)">
+    <path d="M62 0 122 22v52c0 42-28 74-60 88-32-14-60-46-60-88V22z" fill="url(#lg)"/>
+    <path d="M62 0 122 22v52c0 42-28 74-60 88-32-14-60-46-60-88V22z" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/>
+    <rect x="42" y="66" width="40" height="32" rx="5" fill="#fbf8f6"/>
+    <path d="M50 66V56a12 12 0 0 1 24 0v10" fill="none" stroke="#fbf8f6" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="62" cy="80" r="5" fill="#7a0910"/>
+  </g>
+
+  <text x="52" y="296" font-family="'IBM Plex Mono',monospace" font-size="11"
+        letter-spacing="3.4" fill="#6f6469">RESTRICTED · ADMINISTRATOR ACCESS ONLY</text>
+</svg>

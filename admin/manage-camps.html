@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage Camps — RaktSetu Admin</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+  <div class="admin-app-layout">
+
+    <!-- ============ SIDEBAR NAVIGATION ============ -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand-box">
+        <a class="sidebar-brand-link" href="../client/index.html">
+          <span class="sidebar-logo-icon" aria-hidden="true"></span>
+          <span>Rakt<em>Setu</em></span>
+        </a>
+        <p class="sidebar-subtitle-tag">Admin Panel</p>
+      </div>
+
+      <nav class="sidebar-nav-menu" aria-label="Admin sections">
+        <a class="sidebar-nav-link" href="dashboard.html">
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="9" />
+            <rect x="14" y="3" width="7" height="5" />
+            <rect x="14" y="12" width="7" height="9" />
+            <rect x="3" y="16" width="7" height="5" />
+          </svg>
+          Dashboard
+        </a>
+        <a class="sidebar-nav-link" href="manage-donors.html">
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+            <circle cx="9.5" cy="7" r="4" />
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          </svg>
+          Manage Donors
+        </a>
+        <a class="sidebar-nav-link" href="manage-requests.html">
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3.5l5.5 6.2a7.3 7.3 0 1 1-11 0z" />
+          </svg>
+          Manage Blood Requests
+        </a>
+        <a class="sidebar-nav-link active" href="manage-camps.html" aria-current="page">
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" />
+            <path d="M16 3v4M8 3v4M3 11h18" />
+          </svg>
+          Manage Camps
+        </a>
+        <a class="sidebar-nav-link" href="reports.html">
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+          </svg>
+          Reports
+        </a>
+        <a class="sidebar-nav-link sidebar-nav-logout" href="login.html" data-logout>
+          <svg class="sidebar-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <path d="M16 17l5-5-5-5M21 12H9" />
+          </svg>
+          Logout
+        </a>
+      </nav>
+
+    </aside>
+
+    <div class="admin-backdrop-scrim" aria-hidden="true"></div>
+
+    <!-- ============ MAIN CONTENT ============ -->
+    <div class="admin-main-wrapper">
+
+      <header class="admin-header-bar">
+        <button class="admin-mobile-toggle" type="button" aria-label="Open admin menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" aria-hidden="true">
+            <path d="M3 6h18M3 12h18M3 18h18" />
+          </svg>
+        </button>
+
+        <div>
+          <h1 class="admin-header-title">Manage Camps</h1>
+          <nav class="breadcrumb-trail mt-0" aria-label="Breadcrumb">
+            <a href="dashboard.html">Admin</a> <span aria-hidden="true">›</span>
+            <span aria-current="page">Manage Camps</span>
+          </nav>
+        </div>
+
+        <div class="admin-header-tools">
+          <div class="admin-search-box">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" />
+            </svg>
+            <input type="search" id="campSearch" placeholder="Search camp, venue or city…" aria-label="Search camps">
+          </div>
+          <div class="admin-user-avatar" aria-hidden="true">AD</div>
+        </div>
+      </header>
+
+      <main class="admin-content-area" id="main">
+
+        <!-- ---------- TOOLBAR & FILTERS ---------- -->
+        <div class="admin-action-toolbar">
+          <div class="row g-3 align-items-end">
+
+            <div class="col-xl-3 col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kCity">City</label>
+                <select class="select-control" id="kCity">
+                  <option value="">All cities</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Amreli">Amreli</option>
+                  <option value="Anand">Anand</option>
+                  <option value="Bhavnagar">Bhavnagar</option>
+                  <option value="Gandhinagar">Gandhinagar</option>
+                  <option value="Jamnagar">Jamnagar</option>
+                  <option value="Junagadh">Junagadh</option>
+                  <option value="Morbi">Morbi</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Surendranagar">Surendranagar</option>
+                  <option value="Vadodara">Vadodara</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kWhen">Schedule</label>
+                <select class="select-control" id="kWhen">
+                  <option value="">All camps</option>
+                  <option value="upcoming">Upcoming only</option>
+                  <option value="past">Completed only</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <div class="filter-button-group">
+                <button class="custom-btn btn-outline-theme btn-full-width" type="button" id="campClearAdm">Clear
+                  Filters</button>
+              </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6">
+              <a href="#campModal" class="custom-btn btn-primary-theme btn-full-width text-center text-decoration-none"
+                id="addCamp">+ Add New Camp</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="search-results-summary-bar mt-0">
+          <p class="results-filter-description mb-0" id="campNote">All donation camps &mdash; 1,380 volunteer slots
+            total</p>
+          <p class="results-counter-badge mb-0">Showing <b id="campCountAdm">09</b> of <span id="campTotal">09</span>
+            Camps</p>
+        </div>
+
+        <!-- ---------- CAMPS DATA TABLE ---------- -->
+        <div class="table-responsive-wrapper">
+          <table class="custom-data-table admin-data-table">
+            <caption class="visually-hidden">Scheduled blood donation camps with administration controls</caption>
+            <thead>
+              <tr>
+                <th scope="col">Camp ID</th>
+                <th scope="col">Camp Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">Venue</th>
+                <th scope="col">City</th>
+                <th scope="col">Slots</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="campRows">
+              <tr>
+                <td class="cell-id rs-td-id">CMP001</td>
+                <td class="cell-name rs-td-name">Marwadi Univ Mega Blood Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Marwadi University NSS
+                    Cell</div>
+                </td>
+                <td class="cell-numeric rs-td-num">12 Oct 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Main Auditorium, Marwadi University, Morbi Road</td>
+                <td>Rajkot</td>
+                <td class="cell-numeric rs-td-num">180</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP002</td>
+                <td class="cell-name rs-td-name">Red Cross Voluntary Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Indian Red Cross
+                    Society Rajkot</div>
+                </td>
+                <td class="cell-numeric rs-td-num">18 Oct 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Red Cross Bhavan, Jubilee Garden</td>
+                <td>Rajkot</td>
+                <td class="cell-numeric rs-td-num">120</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP003</td>
+                <td class="cell-name rs-td-name">Gandhinagar Corporate Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Infocity IT Association
+                  </div>
+                </td>
+                <td class="cell-numeric rs-td-num">25 Oct 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Infocity Club, Sector 0</td>
+                <td>Gandhinagar</td>
+                <td class="cell-numeric rs-td-num">200</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP004</td>
+                <td class="cell-name rs-td-name">Independence Day Special Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Gujarat State Blood
+                    Transfusion Council</div>
+                </td>
+                <td class="cell-numeric rs-td-num">15 Aug 2026
+                  <div><span class="status-badge badge-fulfilled rs-badge--fulfilled">Completed</span></div>
+                </td>
+                <td>Civil Hospital Grounds, Asarwa</td>
+                <td>Ahmedabad</td>
+                <td class="cell-numeric rs-td-num">250</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP005</td>
+                <td class="cell-name rs-td-name">Diamond City Youth Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Surat Raktdaan Kendra
+                  </div>
+                </td>
+                <td class="cell-numeric rs-td-num">05 Nov 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Veer Narmad South Gujarat Univ Campus</td>
+                <td>Surat</td>
+                <td class="cell-numeric rs-td-num">160</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP006</td>
+                <td class="cell-name rs-td-name">Sayaji Rotary Blood Camp
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Rotary Club of Baroda
+                    Metro</div>
+                </td>
+                <td class="cell-numeric rs-td-num">12 Nov 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Rotary Bhavan, Akota</td>
+                <td>Vadodara</td>
+                <td class="cell-numeric rs-td-num">140</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP007</td>
+                <td class="cell-name rs-td-name">Coastal Rotary Donation Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Rotary Club of Senor
+                    Jamnagar</div>
+                </td>
+                <td class="cell-numeric rs-td-num">19 Nov 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Oshwal Centre, Jamnagar</td>
+                <td>Jamnagar</td>
+                <td class="cell-numeric rs-td-num">110</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP008</td>
+                <td class="cell-name rs-td-name">Ceramic Zone Blood Camp
+                  <div class="text-muted-custom rs-muted small-secondary-copy">Morbi Ceramic
+                    Association</div>
+                </td>
+                <td class="cell-numeric rs-td-num">26 Nov 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>Ceramic Association Hall, 8-A NH</td>
+                <td>Morbi</td>
+                <td class="cell-numeric rs-td-num">90</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td class="cell-id rs-td-id">CMP009</td>
+                <td class="cell-name rs-td-name">Anand Dairy Valley Blood Drive
+                  <div class="text-muted-custom rs-muted small-secondary-copy">NDDB Staff Welfare
+                    Association</div>
+                </td>
+                <td class="cell-numeric rs-td-num">03 Dec 2026
+                  <div><span class="status-badge badge-approved rs-badge--approved">Upcoming</span></div>
+                </td>
+                <td>NDDB Auditorium, Anand</td>
+                <td>Anand</td>
+                <td class="cell-numeric rs-td-num">130</td>
+                <td class="cell-actions rs-td-actions">
+                  <a href="#campModal"
+                    class="custom-btn btn-outline-custom btn-xs-custom rs-btn rs-btn--ghost rs-btn--xs text-decoration-none">Edit</a>
+                  <button type="button"
+                    class="custom-btn btn-danger-custom btn-xs-custom rs-btn rs-btn--danger rs-btn--xs">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ ADD / EDIT CAMP MODAL ============ -->
+  <div class="admin-modal-overlay" id="campModal" role="dialog" aria-modal="true" aria-labelledby="campModalTitle">
+    <div class="modal-dialog-card">
+      <div class="modal-header-bar">
+        <h2 class="modal-title-text" id="campModalTitle">Add New Camp</h2>
+        <a href="#" class="modal-close-btn text-decoration-none d-flex align-items-center justify-content-center"
+          data-close aria-label="Close dialog">&times;</a>
+      </div>
+
+      <form id="campForm" novalidate data-validate data-submit-mode="demo"
+            data-clear-on-success
+            data-status-target="campFormAlert"
+            data-success-message="Form submit ho gaya hai. Demo mein data save nahi hua.">
+        <div class="status-alert-box" id="campFormAlert" role="status" aria-live="polite"></div>
+        <div class="modal-body-area">
+          <div class="row">
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kName">Camp Name <span class="required-star">*</span></label>
+                <input class="input-control" type="text" id="kName" placeholder="e.g. Red Cross Voluntary Camp" required aria-describedby="kErrName" aria-invalid="false">
+                <span class="field-error-msg" id="kErrName"></span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kDate">Camp Date <span class="required-star">*</span></label>
+                <input class="input-control" type="date" id="kDate" data-rule="not-past" required aria-describedby="kErrDate" aria-invalid="false">
+                <span class="field-error-msg" id="kErrDate"></span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kVenue">Venue <span class="required-star">*</span></label>
+                <input class="input-control" type="text" id="kVenue" placeholder="e.g. Red Cross Bhavan, Jubilee" required aria-describedby="kErrVenue" aria-invalid="false">
+                <span class="field-error-msg" id="kErrVenue"></span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kCityField">City <span class="required-star">*</span></label>
+                <select class="select-control" id="kCityField" required aria-describedby="kErrCity" aria-invalid="false">
+                  <option value="">Select city</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Amreli">Amreli</option>
+                  <option value="Anand">Anand</option>
+                  <option value="Bhavnagar">Bhavnagar</option>
+                  <option value="Gandhinagar">Gandhinagar</option>
+                  <option value="Jamnagar">Jamnagar</option>
+                  <option value="Junagadh">Junagadh</option>
+                  <option value="Morbi">Morbi</option>
+                  <option value="Rajkot">Rajkot</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Surendranagar">Surendranagar</option>
+                  <option value="Vadodara">Vadodara</option>
+                </select>
+                <span class="field-error-msg" id="kErrCity"></span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kOrganizer">Organizer <span class="required-star">*</span></label>
+                <input class="input-control" type="text" id="kOrganizer" placeholder="e.g. Indian Red Cross Society" required aria-describedby="kErrOrganizer" aria-invalid="false">
+                <span class="field-error-msg" id="kErrOrganizer"></span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="form-group-item">
+                <label class="form-label-custom" for="kSlots">Donor Slots <span class="required-star">*</span>
+                  <span class="form-label-hint">— 10 to 500</span></label>
+                <input class="input-control" type="number" id="kSlots" inputmode="numeric" min="10" max="500" step="1" placeholder="e.g. 150" required aria-describedby="kErrSlots" aria-invalid="false">
+                <span class="field-error-msg" id="kErrSlots"></span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer-area">
+          <button class="custom-btn btn-primary-theme" type="submit">Save</button>
+          <a href="#" class="custom-btn btn-outline-theme text-decoration-none" data-close>Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/form-validation.js" defer></script>
+</body>
+
+</html>

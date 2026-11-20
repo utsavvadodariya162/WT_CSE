@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-label="Blood donation camp — mobile collection van">
+  <rect width="640" height="360" fill="#f6f2f0"/>
+  <g stroke="#e7dedb" stroke-width="1"><path d="M0 100h640M0 200h640"/></g>
+
+  <!-- van body -->
+  <rect x="86" y="126" width="330" height="132" rx="12" fill="#fbf8f6" stroke="#d9cdc7" stroke-width="2"/>
+  <path d="M416 168h68l58 54v36h-126z" fill="#fbf8f6" stroke="#d9cdc7" stroke-width="2"/>
+  <rect x="428" y="180" width="52" height="38" rx="4" fill="#e6eef3" stroke="#cbd8e1" stroke-width="1.5"/>
+  <rect x="86" y="126" width="330" height="34" rx="12" fill="#b3121b"/>
+  <text x="251" y="150" font-family="'IBM Plex Mono',monospace" font-size="14" font-weight="600"
+        letter-spacing="4.5" fill="#fff" text-anchor="middle">MOBILE UNIT</text>
+
+  <!-- cross emblem -->
+  <g transform="translate(190 178)">
+    <rect x="0" y="0" width="76" height="60" rx="6" fill="#fceeee" stroke="#f0cfd0" stroke-width="1.5"/>
+    <path d="M32 12h12v14h14v12H44v14H32V38H18V26h14z" fill="#b3121b"/>
+  </g>
+
+  <!-- side text lines -->
+  <g stroke="#ddd2cc" stroke-width="4" stroke-linecap="round">
+    <path d="M290 194h96M290 212h72M290 230h84"/>
+  </g>
+
+  <!-- wheels -->
+  <g>
+    <circle cx="176" cy="262" r="30" fill="#453b40"/><circle cx="176" cy="262" r="12" fill="#cbc0ba"/>
+    <circle cx="470" cy="262" r="30" fill="#453b40"/><circle cx="470" cy="262" r="12" fill="#cbc0ba"/>
+  </g>
+  <path d="M60 292h520" stroke="#ccc0ba" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- motion + drop -->
+  <g stroke="#b3121b" stroke-width="2.5" stroke-linecap="round" opacity="0.4">
+    <path d="M24 176h44M12 202h56M30 228h38"/>
+  </g>
+  <path d="M556 92c0 0 20 23 20 35a20 20 0 0 1-40 0c0-12 20-35 20-35z" fill="#b3121b" opacity="0.2"/>
+
+  <text x="28" y="336" font-family="'IBM Plex Mono',monospace" font-size="13"
+        letter-spacing="3" fill="#7c6f75">MOBILE COLLECTION UNIT · ON-SITE CAMP</text>
+</svg>

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RaktSetu — Blood Donor &amp; Emergency Blood Request Portal</title>
+  <meta name="description"
+    content="RaktSetu connects voluntary blood donors with patients and hospitals across Gujarat. Search donors by group and city, raise emergency requests, or attend blood camps.">
+  <meta name="author" content="Utsav Vadodariya — Web Technology Project">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,600;1,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body data-page="home">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ============ NAVIGATION BAR ============ -->
+  <nav class="site-navbar navbar navbar-expand-lg">
+    <div class="container-xl d-flex align-items-center">
+      <a class="navbar-brand-logo navbar-brand" href="index.html">
+        <span class="brand-icon" aria-hidden="true"></span>
+        <span>Rakt<em>Setu</em></span>
+      </a>
+      <button class="navbar-toggler mobile-nav-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="hamburger-icon" aria-hidden="true"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto navbar-links">
+          <li class="nav-item"><a class="nav-item-link active" data-nav="home" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-item-link" data-nav="register" href="register-donor.html">Register as
+              Donor</a></li>
+          <li class="nav-item"><a class="nav-item-link" data-nav="search" href="search-donor.html">Search Donor</a></li>
+          <li class="nav-item"><a class="nav-item-link" data-nav="request" href="request-blood.html">Request Blood</a>
+          </li>
+          <li class="nav-item"><a class="nav-item-link" data-nav="camps" href="camps.html">Camps</a></li>
+          <li class="nav-item"><a class="nav-item-link" data-nav="about" href="about-contact.html">About</a></li>
+        </ul>
+        <a class="custom-btn btn-primary-custom btn-sm-custom nav-login-btn" href="../admin/login.html">Admin Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============ HERO BANNER ============ -->
+    <section class="hero-banner">
+      <div class="container-xl">
+        <div class="row align-items-center g-5">
+
+          <div class="col-lg-6">
+            <p class="section-tag fade-in-on-scroll">Rajkot · Gujarat · 24×7 Network</p>
+
+            <h1 class="hero-main-title fade-in-on-scroll" data-delay="80">
+              Every minute counts.<br>
+              Be the <em>bridge</em> that<br>
+              saves a life.
+            </h1>
+
+            <p class="hero-description fade-in-on-scroll" data-delay="160">
+              RaktSetu links voluntary blood donors with patients and hospitals during
+              emergencies — searchable by blood group and city, so no one loses time
+              looking for the right match.
+            </p>
+
+            <div class="hero-cta-buttons fade-in-on-scroll" data-delay="240">
+              <a class="custom-btn btn-primary-custom" href="register-donor.html">Become a Donor</a>
+              <a class="custom-btn btn-outline-custom" href="request-blood.html">Request Blood</a>
+            </div>
+
+            <div class="hero-stats-row fade-in-on-scroll" data-delay="320">
+              <div>
+                <div class="hero-stat-number">24+</div>
+                <div class="hero-stat-label">Registered Donors</div>
+              </div>
+              <div>
+                <div class="hero-stat-number">9</div>
+                <div class="hero-stat-label">Upcoming Camps</div>
+              </div>
+              <div>
+                <div class="hero-stat-number">10</div>
+                <div class="hero-stat-label">Cities Covered</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <figure class="hero-image-wrapper fade-in-on-scroll m-0" data-delay="180">
+              <img src="images/hero.svg" alt="Blood donor network connection illustration" width="800" height="620">
+            </figure>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BLOOD GROUP AVAILABILITY ============ -->
+    <section class="content-section section-compact">
+      <div class="container-xl">
+        <div class="section-header d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div>
+            <p class="section-tag">Live Donor Network</p>
+            <h2 class="section-heading">Blood Group Availability</h2>
+            <p class="text-muted-custom mb-0 small-body-copy">
+              Live donor directory — select a blood group to find matching voluntary donors across Gujarat.
+            </p>
+          </div>
+          <a class="text-link-btn" href="search-donor.html">Search all donors</a>
+        </div>
+
+        <div class="blood-groups-grid" id="bloodTiles">
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=A%2B"
+            aria-label="4 donors registered with blood group A+">
+            <div class="blood-group-letter">A+</div>
+            <div class="blood-donor-count"><b>04</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:80%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=A-"
+            aria-label="2 donors registered with blood group A-">
+            <div class="blood-group-letter">A-</div>
+            <div class="blood-donor-count"><b>02</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:40%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=B%2B"
+            aria-label="4 donors registered with blood group B+">
+            <div class="blood-group-letter">B+</div>
+            <div class="blood-donor-count"><b>04</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:80%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=B-"
+            aria-label="2 donors registered with blood group B-">
+            <div class="blood-group-letter">B-</div>
+            <div class="blood-donor-count"><b>02</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:40%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=O%2B"
+            aria-label="5 donors registered with blood group O+">
+            <div class="blood-group-letter">O+</div>
+            <div class="blood-donor-count"><b>05</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:100%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=O-"
+            aria-label="2 donors registered with blood group O-">
+            <div class="blood-group-letter">O-</div>
+            <div class="blood-donor-count"><b>02</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:40%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=AB%2B"
+            aria-label="3 donors registered with blood group AB+">
+            <div class="blood-group-letter">AB+</div>
+            <div class="blood-donor-count"><b>03</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:60%"></i></div>
+          </a>
+          <a class="blood-group-card fade-in-on-scroll" href="search-donor.html?group=AB-"
+            aria-label="2 donors registered with blood group AB-">
+            <div class="blood-group-letter">AB-</div>
+            <div class="blood-donor-count"><b>02</b> Donors</div>
+            <div class="blood-fill-bar"><i style="width:40%"></i></div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="content-section section-bg-white">
+      <div class="container-xl">
+        <div class="section-header">
+          <p class="section-tag">Simple Process</p>
+          <h2 class="section-heading">How It Works</h2>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <article class="process-step-card fade-in-on-scroll">
+              <span class="step-number-tag">STEP 01</span>
+              <div class="step-icon-circle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M19 8v6M22 11h-6" />
+                </svg>
+              </div>
+              <h3 class="step-title-text">Register as Donor</h3>
+              <p class="step-description">
+                Fill the simple registration form with your blood group, city and contact
+                details. Your profile is reviewed by the administrator before listing.
+              </p>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="process-step-card fade-in-on-scroll" data-delay="110">
+              <span class="step-number-tag">STEP 02</span>
+              <div class="step-icon-circle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="M21 21l-4.3-4.3" />
+                </svg>
+              </div>
+              <h3 class="step-title-text">Search or Raise Request</h3>
+              <p class="step-description">
+                Search verified donors by blood group, city and availability, or submit an
+                emergency blood request with hospital and urgency details.
+              </p>
+            </article>
+          </div>
+
+          <div class="col-md-4">
+            <article class="process-step-card fade-in-on-scroll" data-delay="220">
+              <span class="step-number-tag">STEP 03</span>
+              <div class="step-icon-circle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 1 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z" />
+                </svg>
+              </div>
+              <h3 class="step-title-text">Connect &amp; Donate</h3>
+              <p class="step-description">
+                Directly contact eligible donors, reach the hospital, and complete the blood
+                donation to save a patient's life in need.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UPCOMING CAMPS ============ -->
+    <section class="content-section">
+      <div class="container-xl">
+        <div class="section-header d-flex flex-wrap align-items-end justify-content-between gap-3">
+          <div>
+            <p class="section-tag">Community Events</p>
+            <h2 class="section-heading">Upcoming Donation Camps</h2>
+          </div>
+          <a class="text-link-btn" href="camps.html">View all camps</a>
+        </div>
+
+        <div class="row g-4" id="homeCamps">
+          <div class="col-lg-4 col-md-6">
+            <article class="compact-camp-item fade-in-on-scroll">
+              <div class="compact-camp-date">
+                <span class="camp-badge-day">15</span>
+                <span class="camp-badge-month">Aug</span>
+              </div>
+              <div class="flex-grow-1">
+                <h3 class="item-heading mb-2 camp-card-title">Independence Day Blood Camp</h3>
+                <ul class="camp-meta-list mb-2">
+                  <li><span class="k">Venue</span><span>Town Hall Ground, Ahmedabad</span></li>
+                  <li><span class="k">Organizer</span><span>Rotary Club of Ahmedabad</span></li>
+                </ul>
+                <a class="custom-btn btn-outline-custom btn-xs-custom" href="camps.html">View Details</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="compact-camp-item fade-in-on-scroll">
+              <div class="compact-camp-date">
+                <span class="camp-badge-day">18</span>
+                <span class="camp-badge-month">Aug</span>
+              </div>
+              <div class="flex-grow-1">
+                <h3 class="item-heading mb-2 camp-card-title">Marwadi University Mega Blood Drive</h3>
+                <ul class="camp-meta-list mb-2">
+                  <li><span class="k">Venue</span><span>University Auditorium, Rajkot</span></li>
+                  <li><span class="k">Organizer</span><span>NSS Unit, Marwadi University</span></li>
+                </ul>
+                <a class="custom-btn btn-outline-custom btn-xs-custom" href="camps.html">View Details</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <article class="compact-camp-item fade-in-on-scroll">
+              <div class="compact-camp-date">
+                <span class="camp-badge-day">24</span>
+                <span class="camp-badge-month">Aug</span>
+              </div>
+              <div class="flex-grow-1">
+                <h3 class="item-heading mb-2 camp-card-title">Red Cross Voluntary Camp</h3>
+                <ul class="camp-meta-list mb-2">
+                  <li><span class="k">Venue</span><span>Red Cross Bhavan, Jubilee, Rajkot</span></li>
+                  <li><span class="k">Organizer</span><span>Indian Red Cross Society</span></li>
+                </ul>
+                <a class="custom-btn btn-outline-custom btn-xs-custom" href="camps.html">View Details</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AWARENESS BANNER ============ -->
+    <section class="content-section section-bg-alt section-compact">
+      <div class="container-xl">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-8">
+            <h2 class="item-heading mb-1">A single blood donation can support up to three patient lives.</h2>
+            <p class="mb-0 text-muted-custom">Healthy individuals can donate blood again every 90 days.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="custom-btn btn-primary-custom" href="register-donor.html">Register as a Donor</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container-xl">
+      <div class="row g-4">
+
+        <div class="col-lg-4 col-md-6">
+          <a class="footer-brand-title" href="index.html">
+            <span class="footer-brand-icon" aria-hidden="true"></span>
+            <span>Rakt<em>Setu</em></span>
+          </a>
+          <p class="footer-about-text">
+            A voluntary blood donor and emergency blood request management platform connecting
+            patients with willing donors across Gujarat.
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 col-6">
+          <h2 class="footer-column-heading">Quick Links</h2>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="register-donor.html">Register as Donor</a></li>
+            <li><a href="search-donor.html">Search Donor</a></li>
+            <li><a href="request-blood.html">Request Blood</a></li>
+            <li><a href="camps.html">Donation Camps</a></li>
+            <li><a href="about-contact.html">About &amp; Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-6">
+          <h2 class="footer-column-heading">Eligibility Guide</h2>
+          <ul class="footer-nav-list">
+            <li><span>Age 18 – 65 years</span></li>
+            <li><span>Weight: 50 kg or above</span></li>
+            <li><span>90-day gap between donations</span></li>
+            <li><span>Haemoglobin 12.5 g/dL minimum</span></li>
+            <li><span>O− is the universal donor group</span></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h2 class="footer-column-heading">Contact &amp; Helpline</h2>
+          <ul class="footer-nav-list">
+            <li><span>Marwadi University, Rajkot, Gujarat</span></li>
+            <li><a href="mailto:info@raktsetu.com">info@raktsetu.com</a></li>
+            <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+            <li><span>National Blood Bank Helpline: 1910</span></li>
+            <li><span>Emergency Ambulance: 108</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-copyright-row">
+        <span>&copy; <span data-year>2026</span> RaktSetu</span>
+        <span><a href="../admin/login.html">Admin Login</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
